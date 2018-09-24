@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            .done{
+                text-decoration: line-through;
+                text-decoration-color: antiquewhite;
+            }
+        
+        </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script  async defer src="js/script.js"></script>
+    
+</head>
+<body>
+    <div id="app">
+        <h1>Todo List</h1>
+        <input v-model="newtask">
+        <button @click="addtask">Add</button>
+        <ul>
+            <li v-for="task in tasklist">
+                <!--<p v-if="task.done===false"><span>{{task.name}}</span></p>
+                <p v-if="task.done===true" style="text-decoration:line-through"><span>{{task.name}}</span></p>-->
+                <!-- <strike v-if="task.done">{{task.name}}</strike>
+                <span v-else>{{task.name}}</span>-->
+                <span :class="{done: task.done}">{{task.name}}</span>
+                <input v-model="task.done" type="checkbox">
+            </li>    
+        </ul>
+    </div>
+</body>
+</html>
